@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  movie_database:
+    image: postgres:alpine
+    container_name: movie_postgres
+    environment:
+      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASS}
+    ports:
+      - "127.0.0.1:5000:5432"
+    volumes:
+       - ./pgdata:/var/lib/postgresql/data
+    restart: on-failure
+
+  movie_usage_redis:
+    image: redis:alpine
+    container_name: movie_usage_redis
+    working_dir: /var/lib/redis
+    ports:
+      - "127.0.0.1:6000:6379"
+    volumes:
+      - ./redis/movie_usage_redis.conf:/usr/local/etc/redis/redis.conf
+    restart: on-failure
+
+  movie_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: movie_backend
+    ports:
+      - "3001:3001"

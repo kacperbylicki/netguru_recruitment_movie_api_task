@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const { movieRoute } = require("./routes");
+const { movieRoute } = require("./routes/movieRoute");
 
 const { 
     JWT_SECRET, 

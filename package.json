@@ -2,7 +2,9 @@
   "name": "node_movie_api",
   "version": "1.0.0",
   "description": "node simple movies api",
-  "scripts": {},
+  "scripts": {
+    "start": "node ./source/server.js"
+  },
   "main": "./source/server.js",
   "keywords": [],
   "author": "Kacper Bylicki",
