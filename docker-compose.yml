@@ -10,7 +10,7 @@ services:
     ports:
       - "127.0.0.1:5000:5432"
     volumes:
-       - ./pgdata:/var/lib/postgresql/data
+       - movie_postgres:/var/lib/postgresql/data
     restart: on-failure
 
   movie_usage_redis:
@@ -20,7 +20,7 @@ services:
     ports:
       - "127.0.0.1:6000:6379"
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis_config/redis.conf:/usr/local/etc/redis/redis.conf
     restart: on-failure
 
   movie_backend:
@@ -38,14 +38,11 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    depends_on:
-      - movie_postgres
-      - movie_usage_redis
     ports:
       - "3001:3001"
     restart: on-failure
 
 volumes:
-  pgdata:
-  redis:
+  movie_postgres:
+  redis_config:
   
