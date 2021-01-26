@@ -1,11 +1,9 @@
-const redis = require("redis");
-
 const verifyUsage = async () => {
-    const { role } = req.user;
+    const { userId, role } = req.user;
 
     if (role === 'premium') next();
 
-    
+
 
 };
 

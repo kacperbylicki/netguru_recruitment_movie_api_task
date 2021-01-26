@@ -14,7 +14,7 @@ const setMovieByUID = async (req, res) => {
     const {} = await axios.get(`http://www.omdbapi.com/?t=${title}`);
 };
 
-movieRoutes.get('/movies', verifyUser, verifyUsage, fetchMoviesByUID);
+movieRoutes.get('/movies', verifyUser, fetchMoviesByUID);
 movieRoutes.post('/movies', verifyUser, verifyUsage, setMovieByUID);
 
 module.exports = {
