@@ -20,6 +20,7 @@ services:
     ports:
       - "127.0.0.1:6000:6379"
     volumes:
+      - movie_redis_data:/var/lib/redis
       - ./redis_config/redis.conf:/usr/local/etc/redis/redis.conf
     restart: on-failure
 
@@ -44,5 +45,6 @@ services:
 
 volumes:
   movie_postgres:
+  movie_redis_data:
   redis_config:
   
