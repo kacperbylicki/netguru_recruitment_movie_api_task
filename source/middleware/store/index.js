@@ -12,13 +12,13 @@ const redisAsync = promisifyAll(redis);
 
 const setUsage = async (id) => {
     try {
-        if (!id) throw new RedisError('invalid_id')
+        if (!id) throw new RedisError('invalid_id');
     
         const client = redisAsync.createClient(REDIS_PORT);
     
         const redis_res = await client.setAsync(`request_count_${id}`, 0, 'EX', 2628000);
     
-        if (redis_res === 'OK') return { usage: redis_res };
+        if (redis_res === 'OK') return { usage: 0 };
         
     } catch (error) {
         throw new RedisError(error);
