@@ -1,5 +1,6 @@
-*
-!.env
-!source
-!package.json
-!yarn.lock
+node_modules
+.gitignore
+README.md
+docker-compose.yml
+Dockerfile
+redis_config
