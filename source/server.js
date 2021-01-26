@@ -1,14 +1,9 @@
 const express = require("express");
-const dotenv = require("dotenv");
-
-dotenv.config()
+require("dotenv").config();
 
 const { movieRoutes } = require("./routes");
 
-const { 
-    JWT_SECRET, 
-    PORT
-} = process.env;
+const { JWT_SECRET, PORT } = process.env;
 
 if (!JWT_SECRET) {
     throw new Error("Missing JWT_SECRET env var. Set it and restart the server");
