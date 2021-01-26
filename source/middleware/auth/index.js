@@ -24,7 +24,7 @@ const verifyUser = async (req, res, next) => {
 
         next();
     } catch (error) {
-        return res.status(401).json({ error: 'unauthorized' });
+        return res.status(403).json({ error: 'access_refused' });
     }
 };
 
