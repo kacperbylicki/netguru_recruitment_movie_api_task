@@ -1,7 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 
-const { movieRoute } = require("./routes/movieRoute");
+dotenv.config()
+
+const { movieRoutes } = require("./routes");
 
 const { 
     JWT_SECRET, 
@@ -16,9 +19,10 @@ if (!JWT_SECRET) {
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.use('/api/v1', movieRoute);
+app.use('/api/v1', movieRoutes);
 
 app.listen(PORT, () => {
     console.log(`movie api running at port ${PORT}`);
