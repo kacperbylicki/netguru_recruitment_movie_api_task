@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 
-const verifyUser = async (req, res, next) => {
+const verifyUser = (req, res, next) => {
     let token = req.headers['authorization'];
 
     if (!token) {
-        return res.status(401).json({ error: 'invalid_payload' });
+        return res.status(400).json({ error: 'invalid_payload' });
     }
 
     if (token.includes("Bearer")) {
