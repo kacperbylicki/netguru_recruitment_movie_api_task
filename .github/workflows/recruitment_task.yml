@@ -36,4 +36,4 @@ jobs:
       run: docker ps
       
     - name: Test service
-      run: docker exec -it movie_backend yarn test
+      run: docker exec movie_backend yarn test
