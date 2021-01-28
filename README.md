@@ -8,14 +8,6 @@ I've decided to make it as simple as possible, so You'll not find any webpack/ba
 * [Setup](#setup)
 * [Endpoints](#endpoints)
 
-## ⚠️ Issue
-
-I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests
-
-Error 137 is OOM error, but memory usage of those containers during tests is ~100MB, while Github runner memory limit is 6.971GB.
-
-In local environment or in DO Droplet everything runs as it should.
-
 ## Stack
 
 * Express [4.17.1] - REST API framework to put app together
@@ -36,6 +28,14 @@ You need to have `docker` and `docker-compose` installed
 * To run tests type `docker exec movie_backend yarn test`
 
 ⚠️ If You're using MacOs with docker-compose, You have to replace `${POSTGRES_HOST}` and `${REDIS_HOST}` env variables in docker-compose.yml with `host.docker.internal`.
+
+## ⚠️ Issue
+
+I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests
+
+Error 137 is OOM error, but memory usage of those containers during tests is ~100MB, while Github runner memory limit is 6.971GB.
+
+In local environment or in DO Droplet everything runs as it should.
 
 ## Usage
 
