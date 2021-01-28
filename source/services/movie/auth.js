@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
-const verifyUser = (req, res, next) => {
-    let token = req.headers['authorization'];
+const verifyAuth = (req, res, next) => {
+    let token = req.cookies['x-access-token'] || req.headers['authorization'];
 
     if (!token) {
         return res.status(400).json({ error: 'invalid_payload' });
@@ -33,5 +33,5 @@ const verifyUser = (req, res, next) => {
 };
 
 module.exports = {
-    verifyUser
-}
+  verifyAuth
+};

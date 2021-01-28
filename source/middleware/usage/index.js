@@ -1,9 +1,8 @@
 const { 
     getUsage, 
     setUsage, 
-    increaseUsage, 
     RedisError 
-} = require("../store");
+} = require("../store/");
 
 const verifyUsage = async (req, res, next) => {
     if (!req.user) {
@@ -20,13 +19,21 @@ const verifyUsage = async (req, res, next) => {
         if (role === "premium") {
             next();
         } else {
-            const { usage } = await getUsage(userId) === null ? await setUsage(userId) : await increaseUsage(userId);
+            const { usage } = await getUsage(userId);
+
+            if (usage <= 5 && usage !== null)  {
+                next();
+            }
+
+            if (usage === null) {
+                await setUsage(userId);
+
+                next();
+            }
 
             if (usage > 5) {
                 return res.status(403).json({ error: 'monthly_usage_exceed' });
             }
-
-            next();
         }
 
     } catch (error) {
