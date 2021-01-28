@@ -10,6 +10,7 @@ services:
     ports:
       - "127.0.0.1:5000:5432"
     volumes:
+       - ./database_init/init.sql:/docker-entrypoint-initdb.d/init.sql
        - movie_postgres:/var/lib/postgresql/data
     restart: on-failure
 
@@ -17,6 +18,9 @@ services:
     image: redis:alpine
     container_name: movie_usage_redis
     working_dir: /var/lib/redis
+    environment: 
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    command: ["sh", "-c", "redis-server --requirepass ${REDIS_PASSWORD}"]
     ports:
       - "127.0.0.1:6000:6379"
     volumes:
@@ -32,13 +36,17 @@ services:
     environment:
       PORT: ${PORT}
       JWT_SECRET: ${JWT_SECRET}
-      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PORT: host.docker.internal
       REDIS_HOST: ${REDIS_HOST}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       POSTGRES_PORT: ${POSTGRES_PORT}
-      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_HOST: host.docker.internal
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    depends_on: 
+      - movie_postgres
+      - movie_usage_redis
     ports:
       - "3001:3001"
     restart: on-failure
@@ -47,4 +55,3 @@ volumes:
   movie_postgres:
   movie_redis_data:
   redis_config:
-  
