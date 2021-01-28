@@ -35,5 +35,8 @@ jobs:
     - name: Check containers
       run: docker ps
       
+    - name: Docker stats
+      run: docker stats movie_backend
+      
     - name: Test service
       run: docker exec movie_backend yarn test
