@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "node simple movies api",
   "scripts": {
+    "test": "jest",
     "start": "node ./source/server.js"
   },
   "main": "./source/server.js",
@@ -12,10 +13,16 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bluebird": "^3.7.2",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "pg": "^8.5.1",
     "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "supertest": "^6.1.3"
   }
 }
