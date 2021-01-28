@@ -1,4 +1,4 @@
-name: Netguru Recruitment task docker-compose CI
+name: movie service tests
 
 on:
   pull_request:
@@ -23,7 +23,7 @@ jobs:
       
     steps:
     - uses: actions/checkout@v2
-      
+
     - name: Build service with docker-compose
       run: docker-compose up -d
       
