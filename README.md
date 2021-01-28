@@ -23,11 +23,31 @@ You need to have `docker` and `docker-compose` installed
 ## Setup
 
 * Clone this repository with `git clone`
-* Create new `.env` file in main directory. See `.env.example` to see example env variables. It's obligatory to set same variables names. 
+* Create new `.env` file in main directory. See `.env.example` to see example env variables. It's obligatory to set same variables names. .env file should look like e.g.
+
+```
+PORT=3001
+JWT_SECRET=YOURS_JWT_SECRET
+DB_SECRET=YOURS_DB_SECRET
+API_KEY=YOURS_OMDB_API_SECRET
+REDIS_HOST=FOR_UBUNTU_CONTAINER_NAME
+REDIS_PASSWORD=YOURS_REDIS_PASSWORD
+REDIS_PORT=6000
+POSTGRES_HOST=FOR_UBUNTU_CONTAINER_NAME
+POSTGRES_PORT=5000
+POSTGRES_DB=YOURS_POSTGRES_DB_NAME
+POSTGRES_USER=YOURS_POSTGRES_USERNAME
+POSTGRES_PASSWORD=YOURS_POSTGRES_PASSWORD
+POSTGRES_TEST_PORT=5001
+POSTGRES_TEST_HOST=YOURS_TESTING_POSTGRES_HOST
+```
+
 * Run `docker-compose up -d` to setup containers
 * To run tests type `docker exec movie_backend yarn test`
 
-⚠️ If You're using MacOs with docker-compose, You have to replace `${POSTGRES_HOST}` and `${REDIS_HOST}` env variables in docker-compose.yml with `host.docker.internal`.
+While testing You can reset testing database by: `docker-compose down` and `docker-compose up -d`
+
+⚠️ If You're using MacOs with docker-compose, You have to replace `${POSTGRES_HOST}`, `${POSTGRES_TEST_HOST}` and `${REDIS_HOST}` env variables in docker-compose.yml with `host.docker.internal`.
 
 ## ⚠️ Issue
 
