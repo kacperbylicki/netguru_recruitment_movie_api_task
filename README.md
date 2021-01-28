@@ -60,7 +60,7 @@ You can use this API with e.g. Postman. The address at which the API will be ava
 
 1. Get list of movies: `GET /api/v1/movies`
 
-    If User is authenticated (but not yet added any movie) You'll get response as:
+    If User is authenticated but not yet added any movie, You'll get response as:
 
     ```
     {
@@ -69,7 +69,7 @@ You can use this API with e.g. Postman. The address at which the API will be ava
     }
     ```
 
-    If User is authenticated (and added any movie) You'll get response as:
+    If User is authenticated and added any movie, You'll get response as:
 
     ```
     {
@@ -86,7 +86,7 @@ You can use this API with e.g. Postman. The address at which the API will be ava
     }
     ```
 
-    If User is not authenticated or authentication failed You'll get response as:
+    If User is not authenticated or authentication failed, You'll get response as:
 
     ```
     Status: 403 Forbidden
@@ -96,11 +96,11 @@ You can use this API with e.g. Postman. The address at which the API will be ava
     }
     ```
 
-    If User will not provide Authorization header or x-access-cookie is not set You'll get response as:
+    If User not provided Authorization header or x-access-cookie is not set, You'll get response as:
 
     ```
     Status: 400 Bad Request
-    
+
     {
         "error": "invalid_payload"
     }
