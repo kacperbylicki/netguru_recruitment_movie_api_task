@@ -30,24 +30,6 @@ const authBasic = async () => {
     };
 };
 
-describe('Get Movies with proper JWT', () => {
-    it('Should return statusCode 200, count of type number and data of type object', async () => {
-        const headers = await authPremium();
-
-        const res = 
-            await request(SERVER_URL)
-            .get('/api/v1/movies')
-            .set(headers);
-
-        const { statusCode, body: { count, data } } = res;
-
-        expect(statusCode).toEqual(200);
-        expect(typeof count).toEqual('number');
-        expect(typeof data).toEqual('object');
-    });
-});
-
-
 describe('Get Movies with invalid JWT', () => {
     it('Should return statusCode 403', async () => {
 
@@ -63,6 +45,23 @@ describe('Get Movies with invalid JWT', () => {
         const { statusCode } = res;
 
         expect(statusCode).toEqual(403);
+    });
+});
+
+describe('Get Movies with proper JWT', () => {
+    it('Should return statusCode 200, count of type number and data of type object', async () => {
+        const headers = await authPremium();
+
+        const res = 
+            await request(SERVER_URL)
+            .get('/api/v1/movies')
+            .set(headers);
+
+        const { statusCode, body: { count, data } } = res;
+
+        expect(statusCode).toEqual(200);
+        expect(typeof count).toEqual('number');
+        expect(typeof data).toEqual('object');
     });
 });
 
