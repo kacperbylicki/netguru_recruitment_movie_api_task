@@ -2,19 +2,19 @@
 
 I've decided to make it as simple as possible, so You'll not find any webpack/babel/ts here.
 
-## Issue
-
-    ⚠️ I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests
-
-    Error 137 is OOM error, but memory usage of those containers during tests is ~100MB, while Github runner memory limit is 6.971GB.
-
-    In local environment or in DO Droplet everything runs as it should.
-
 ## Table of Contents
 
 * [Stack](#stack)
 * [Setup](#setup)
 * [Endpoints](#endpoints)
+
+## ⚠️ Issue
+
+    I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests
+
+    Error 137 is OOM error, but memory usage of those containers during tests is ~100MB, while Github runner memory limit is 6.971GB.
+
+    In local environment or in DO Droplet everything runs as it should.
 
 ## Stack
 
