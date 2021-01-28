@@ -141,7 +141,7 @@ You can use this API with e.g. Postman. The address at which the API will be ava
     }
     ```
 
-    If movie of this title not exists in OMBD service, You'll get response as:
+    If movie of provided title not exists in OMBD service, You'll get response as:
 
     ```
     {
