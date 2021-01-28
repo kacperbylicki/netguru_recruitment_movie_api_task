@@ -37,7 +37,7 @@ You can use this API with e.g. Postman. The address at which the API will be ava
 
 1. Authentication: `POST /api/v1/auth`
 
-    Make request with following JSON payload:
+    Make request with following payload:
 
     ```
     {
@@ -60,6 +60,51 @@ You can use this API with e.g. Postman. The address at which the API will be ava
 
 1. Get list of movies: `GET /api/v1/movies`
 
+    If User is authenticated (but not yet added any movie) You'll get response as:
+
+    ```
+    {
+        "count": 0,
+        "data": []
+    }
+    ```
+
+    If User is authenticated (and added any movie) You'll get response as:
+
+    ```
+    {
+        "count": 1,
+        "data": [
+            {
+                "_id": "8139ace02f4e8a5ebd10977aace56883805f525f",
+                "title": "Interstellar",
+                "released_at": "2014-11-07T00:00:00.000Z",
+                "genre": "Adventure, Drama, Sci-Fi",
+                "director": "Christopher Nolan"
+            }
+        ]
+    }
+    ```
+
+    If User is not authenticated or authentication failed You'll get response as:
+
+    ```
+    Status: 403 Forbidden
+
+    {
+        "error": "access_refused"
+    }
+    ```
+
+    If User will not provide Authorization header or x-access-cookie is not set You'll get response as:
+
+    ```
+    Status: 400 Bad Request
+    
+    {
+        "error": "invalid_payload"
+    }
+    ```
 2. Insert new movie by it's title: `POST /api/v1/movies`
 
 
