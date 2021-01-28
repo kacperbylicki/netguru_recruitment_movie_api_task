@@ -32,6 +32,8 @@ app.use((error, _, res, __) => {
     return res.status(500).json({ error: "internal server error" });
 });
 
-app.listen(PORT, () => {
-    console.log(`movie api running at port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => {
+        console.log(`movie api running at port ${PORT}`);
+    });
+};

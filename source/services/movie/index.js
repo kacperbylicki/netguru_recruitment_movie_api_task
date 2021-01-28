@@ -5,7 +5,7 @@ const { insertMovie, getMovies } = require("../../database/");
 
 const getAllMovies = async (req, res) => {
     if (!req.user) {
-        return res.status(400).json({ error: "invalid payload" });
+        return res.status(400).json({ error: "invalid_payload" });
     }
 
     const { userId } = req.user;
@@ -65,11 +65,11 @@ const setMovie = async (req, res) => {
                 });
                 
             } else {
-                return res.status(200).json({ insert: rowCount, result: 'movie_exists' });
+                return res.status(200).json({ insert: rowCount, result: 'movie_exists', data: [] });
             }
             
         } else {
-            return res.status(200).json({ insert: 0, result: 'movie_not_found' });
+            return res.status(200).json({ insert: 0, result: 'movie_not_found', data: [] });
         }
         
     } catch (error) {

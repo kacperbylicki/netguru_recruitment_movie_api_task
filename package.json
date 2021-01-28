@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "node simple movies api",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_ENV=test jest --forceExit --detectOpenHandles",
     "start": "node ./source/server.js"
   },
   "main": "./source/server.js",

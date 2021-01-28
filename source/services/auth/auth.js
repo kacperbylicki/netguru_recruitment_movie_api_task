@@ -23,7 +23,7 @@ const authFactory = (secret) => (username, password) => {
   const user = users.find((u) => u.username === username);
 
   if (!user || user.password !== password) {
-    throw new AuthError("invalid username or password");
+    throw new AuthError("invalid_username_or_password");
   }
 
   return jwt.sign(
