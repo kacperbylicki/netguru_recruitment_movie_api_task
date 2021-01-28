@@ -55,3 +55,4 @@ volumes:
   movie_postgres:
   movie_redis_data:
   redis_config:
+  database_init:
