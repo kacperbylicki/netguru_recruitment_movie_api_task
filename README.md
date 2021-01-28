@@ -6,6 +6,7 @@ I've decided to make it as simple as possible, so You will not find any webpack/
 
 * [Stack](#stack)
 * [Setup](#setup)
+* [Endpoints](#endpoints)
 
 ## Stack
 
@@ -32,10 +33,16 @@ You can use this API with e.g. Postman. The address at which the API will be ava
 
 ## Endpoints
 
-1. Authentication Endpoint: `POST /api/v1/auth`
+### Endpoint that not require Authentication
+
+1. Authentication: `POST /api/v1/auth`
 
 
-### Endpoints that require Authentication
+### Endpoints that require Authentication (dependent on the current user)
+
+1. Get list of movies: `GET /api/v1/movies`
+
+2. Insert new movie by it's title: `POST /api/v1/movies`
 
 
 
