@@ -4,7 +4,7 @@ I've decided to make it as simple as possible, so You will not find any webpack/
 
 ## Table of Contents
 
-* [Stack](#technologies)
+* [Stack](#stack)
 * [Setup](#setup)
 
 ## Stack
@@ -21,14 +21,14 @@ You need to have `docker` and `docker-compose` installed
 
 ## Setup
 
-* Clone this repository: `git clone https://github.com/kacperbylicki/netguru_recruitment_movie_api_task.git`
+* Clone this repository with `git clone`
 * Create new `.env` file in main directory. See `.env.example` to see example env variables. It's obligatory to set same variables names. 
 * Run `docker-compose up -d` to setup containers
 * To run tests type `docker exec movie_backend yarn test`
 
 ## Usage
 
-You can usage this API with e.g. Postman. The address at which the API will be available by default in Your local environment is localhost:3001
+You can use this API with e.g. Postman. The address at which the API will be available by default in Your local environment is localhost:3001
 
 ## Endpoints
 
@@ -37,14 +37,5 @@ You can usage this API with e.g. Postman. The address at which the API will be a
 
 ### Endpoints that require Authentication
 
-Closed endpoints require a valid Token to be included in the header of the
-request. A Token can be acquired from the Login view above.
 
-### Current User related
-
-Each endpoint manipulates or displays information related to the User whose
-Token is provided with the request:
-
-* [Show info](user/get.md) : `GET /api/v1/movies/`
-* [Show info](user/post.md) : `POST /api/v1/movies/`
 
