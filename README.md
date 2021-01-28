@@ -2,6 +2,14 @@
 
 I've decided to make it as simple as possible, so You'll not find any webpack/babel/ts here.
 
+## Issue
+
+    ⚠️ I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests
+
+    Error 137 is OOM error, but memory usage of those containers during tests is ~100MB, while Github runner memory limit is 6.971GB.
+
+    In local environment or in DO Droplet everything runs as it should.
+
 ## Table of Contents
 
 * [Stack](#stack)
@@ -26,6 +34,8 @@ You need to have `docker` and `docker-compose` installed
 * Create new `.env` file in main directory. See `.env.example` to see example env variables. It's obligatory to set same variables names. 
 * Run `docker-compose up -d` to setup containers
 * To run tests type `docker exec movie_backend yarn test`
+
+⚠️ If You're using MacOs with docker-compose, You have to replace `${POSTGRES_HOST}` and `${REDIS_HOST}` env variables in docker-compose.yml with `host.docker.internal`.
 
 ## Usage
 
