@@ -1,6 +1,6 @@
 # NETGURU Junior Node.js recruitment task
 
-I've decided to make it as simple as possible, so You will not find any webpack/babel/ts here.
+I've decided to make it as simple as possible, so You'll not find any webpack/babel/ts here.
 
 ## Table of Contents
 
@@ -96,7 +96,7 @@ You can use this API with e.g. Postman. The address at which the API will be ava
     }
     ```
 
-    If User not provided Authorization header or x-access-cookie is not set, You'll get response as:
+    If You not provided Authorization header or x-access-cookie is not set, You'll get response as:
 
     ```
     Status: 400 Bad Request
@@ -105,7 +105,79 @@ You can use this API with e.g. Postman. The address at which the API will be ava
         "error": "invalid_payload"
     }
     ```
+
 2. Insert new movie by it's title: `POST /api/v1/movies`
 
+    Example payload of movie insertion request:
 
+    ```
+    {
+        "title": "Interstellar"
+    }
+    ```
+
+    If movie of this title wasn't added yet, You'll get response as:
+
+    ```
+    {
+        "insert": 1,
+        "result": "movie_inserted_successfully",
+        "data": {
+            "Title": "Tenet",
+            "Released": "03 Sep 2020",
+            "Genre": "Action, Sci-Fi, Thriller",
+            "Director": "Christopher Nolan"
+        }
+    }
+    ```
+
+    If movie was added previously, You'll get response as:
+
+    ```
+    {
+        "insert": 0,
+        "result": "movie_exists",
+        "data": []
+    }
+    ```
+
+    If movie of this title not exists in OMBD service, You'll get response as:
+
+    ```
+    {
+        "insert": 0,
+        "result": "movie_not_found",
+        "data": []
+    }
+    ```
+
+    If `Basic` role User exceed monthly usage of 5 movie insert, You'll get response as:
+
+    ```
+    Status: 403 Forbidden
+
+    {
+        "error": "monthly_usage_exceed"
+    }
+    ```
+
+    If User is not authenticated or authentication failed, You'll get response as:
+
+    ```
+    Status: 403 Forbidden
+
+    {
+        "error": "access_refused"
+    }
+    ```
+
+    If You not provided Authorization header or x-access-cookie is not set, You'll get response as:
+
+    ```
+    Status: 400 Bad Request
+
+    {
+        "error": "invalid_payload"
+    }
+    ```
 
