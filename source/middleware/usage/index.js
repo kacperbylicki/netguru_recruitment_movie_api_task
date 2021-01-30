@@ -21,7 +21,7 @@ const verifyUsage = async (req, res, next) => {
         } else {
             const { usage } = await getUsage(userId);
 
-            if (usage < 5 && usage !== null)  {
+            if (+usage < 5 && usage !== null)  {
                 next();
             }
 
@@ -31,7 +31,7 @@ const verifyUsage = async (req, res, next) => {
                 next();
             }
 
-            if (usage > 5) {
+            if (+usage >= 5) {
                 return res.status(403).json({ error: 'monthly_usage_exceed' });
             }
         }
