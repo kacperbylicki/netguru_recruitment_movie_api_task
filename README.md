@@ -51,7 +51,7 @@ While testing You can reset testing database by: `docker-compose down` and `dock
 
 ## ⚠️ Issue
 
-I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests
+I can't manage what causes `Error 137` of `movie_usage` Docker container during PR tests.
 
 Error 137 is OOM error, but memory usage of those containers during tests is ~100MB, while Github runner memory limit is 6.971GB.
 
