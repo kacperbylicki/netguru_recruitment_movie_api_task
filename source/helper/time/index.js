@@ -5,7 +5,7 @@ const firstOfNextMonth = () => {
 
     const startOfMonth = moment().add(1, 'month').startOf('month').unix();
 
-    return parseInt(startOfMonth - now.unix());
+    return +(startOfMonth - now.unix());
 };
 
 module.exports = {
