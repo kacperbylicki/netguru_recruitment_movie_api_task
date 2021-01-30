@@ -21,7 +21,7 @@ const verifyUsage = async (req, res, next) => {
         } else {
             const { usage } = await getUsage(userId);
 
-            if (usage <= 5 && usage !== null)  {
+            if (usage < 5 && usage !== null)  {
                 next();
             }
 
