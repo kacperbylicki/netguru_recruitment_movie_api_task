@@ -47,7 +47,7 @@ POSTGRES_TEST_HOST=YOURS_TESTING_POSTGRES_HOST
 
 While testing You can reset testing database by: `docker-compose down` and `docker-compose up -d`
 
-⚠️ If You're using MacOs with docker-compose, You have to replace `${POSTGRES_HOST}`, `${POSTGRES_TEST_HOST}` and `${REDIS_HOST}` env variables in docker-compose.yml with `host.docker.internal`.
+⚠️ If You're using MacOs with docker-compose with external ports (outside docker-compose) like (6000, 5001, 5000) You have to replace `${POSTGRES_HOST}`, `${POSTGRES_TEST_HOST}` and `${REDIS_HOST}` env variables in docker-compose.yml with `host.docker.internal`. If You're using internal ports of containers like (6379, 5432) You can use container name as host.
 
 ## ⚠️ Issue
 
